@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ "$1" = "like" ]
+
+then
+
+ echo "please like me"
+
+else
+
+ echo "okay, then get lost"
+fi

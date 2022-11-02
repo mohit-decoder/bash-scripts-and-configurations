@@ -1,0 +1,18 @@
+upstream endpoint1 {
+        server 65.0.104.13:80;
+        server 3.109.216.18:80;
+}
+
+
+
+
+server {
+        listen 80;
+	  listen [::]:80;
+        server_name localhost;
+
+        location /student {
+        proxy_pass http://tomcat internal dns lb:8080;
+}
+}
+

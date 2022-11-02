@@ -1,0 +1,25 @@
+#!/bin/bash
+
+echo "I will be a Great Devops Engineer"
+
+#echo  $BASH
+
+name="Mohit"
+
+echo "hello ${name}, Please enter your age"
+
+read age
+
+echo "My age is ${age}"
+
+echo "how are you ?"
+
+sleep 2
+
+echo "are you coming tomorrows class"
+
+sleep 2
+
+echo "ok lets see you in the class"
+
+echo "This Script is written by $1"

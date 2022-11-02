@@ -1,0 +1,50 @@
+Tomcat Instance
+
+#!/bin/bash
+sudo yum install java-openjdk -y
+curl -O https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.78/bin/apache-tomcat-8.5.78.tar.gz
+sudo curl -O https://s3-us-west-2.amazonaws.com/studentapi-cit/mysql-connector.jar
+sudo tar -xzvf apache-tomcat-8.5.78.tar.gz -C /mnt
+cd /mnt/apache-tomcat-8.5.78
+sudo mv mysql-connector.jar /mnt/apache-tomcat-8.5.78/lib
+sudo mv student.war /mnt/apache-tomcat-8.5.78/webapps/
+sudo ./bin/catalina.sh start
+
+cd /mnt/apache-tomcat-8.5.78/conf --> context.xml
+ line 20-22 
+
+<Resource name="jdbc/TestDB" auth="Container" type="javax.sql.DataSource"
+           maxTotal="500" maxIdle="30" maxWaitMillis="1000"
+           username="USER" password="password" driverClassName="com.mysql.jdbc.Driver"
+           url="jdbc:mysql://(IP of Mariadb Instance):3306/studentapp?useUnicode=yes&amp;characterEncoding=utf8"/>
+
+
+
+
+MARIADB INSTANCE
+
+yum install mariadb* -y
+
+
+systemctl start mariadb 
+systemctl status mariadb 
+mysql 
+
+create user 'USER' identified by 'password'
+
+grant all privileges on *.* to 'USER'
+
+flush privileges
+
+
+CREATE DATABASE studentapp;
+use studentapp;
+CREATE TABLE if not exists students(student_id INT NOT NULL AUTO_INCREMENT,
+	student_name VARCHAR(100) NOT NULL,
+    student_addr VARCHAR(100) NOT NULL,
+	student_age VARCHAR(3) NOT NULL,
+	student_qual VARCHAR(20) NOT NULL,
+	student_percent VARCHAR(10) NOT NULL,
+	student_year_passed VARCHAR(10) NOT NULL,
+	PRIMARY KEY (student_id)
+);

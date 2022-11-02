@@ -1,0 +1,17 @@
+#!/bin/bash
+
+src_dir=/home/mohit/scripts
+tgt_dir=/home/mohit/scripts/backups
+
+curr_timestamp=$(date "+%d-%m-%Y-%H-%M-%S")
+
+#echo "$curr_timestamp"
+
+backup_file=$tgt_dir/$curr_timestamp.tgz
+
+echo "Taking backup on $curr_timestamp"
+#echo "backup_file"
+
+tar czf $backup_file --absolute-names $src_dir
+
+echo "Backup complete"

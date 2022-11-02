@@ -1,0 +1,29 @@
+#!/bin/bash
+
+echo "I will be a Great Devops Engineer"
+
+#echo $PWD
+
+name="vaibhav"
+
+echo "hello ${name}, please enter your roll number"
+
+read rollnumber
+
+echo "your roll number is ${rollnumber}"
+
+echo "how was your test?"
+
+read yes
+
+sleep 2
+
+echo "are you sure that you will be passed in this exam?"
+
+read yes
+
+sleep 2
+
+echo "ok then see you in the next exam."
+
+read bye
